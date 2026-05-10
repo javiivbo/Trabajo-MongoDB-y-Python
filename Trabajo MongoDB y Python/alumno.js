@@ -1,0 +1,1 @@
+db.alumnos.find()
