@@ -113,10 +113,15 @@ def buscar_regex():
         print(a)
 
 def buscar_rango_fechas():
-    inicio = datetime.strptime(input("Fecha inicio (YYYY-MM-DD): "), "%Y-%m-%d")
-    fin = datetime.strptime(input("Fecha fin (YYYY-MM-DD): "), "%Y-%m-%d")
-    for a in alumnos.find({"fecha_matricula": {"$gte": inicio, "$lte": fin}}):
-        print(a)
+    try: 
+        inicio = datetime.strptime(input("Fecha inicio (YYYY-MM-DD): "), "%Y-%m-%d")
+        fin = datetime.strptime(input("Fecha fin (YYYY-MM-DD): "), "%Y-%m-%d")
+        for a in alumnos.find({"fecha_matricula": {"$gte": inicio, "$lte": fin}}):
+            print(a)
+    except ValueError: 
+        print("Ingrese en el formato solicitado")
+    
+
 
 def buscar_subdocumento():
     comuna = input("Alumnos de la comuna de: ")
